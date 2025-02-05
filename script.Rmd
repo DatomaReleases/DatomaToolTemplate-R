@@ -1,0 +1,34 @@
+---
+title: "Simple Test"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+params:
+    first_parameter: "default option"
+    input_file: "test.txt"
+---
+
+```{r prints}
+# Print test messages
+print("Hello, this is a test print!")
+print(paste("Today's date is:", Sys.Date()))
+```
+
+```{r read-file}
+# Read input file
+input_path <- params$input_file # Access the input file path
+
+tryCatch({
+  input_content <- readLines(input_path)
+  print("Successfully read input file:")
+}, error = function(e) {
+  print(paste("Error reading input file:", e$message))
+})
+```
+```{r save-file}
+input_parameter <- params$first_parameter # Access the parameter
+
+# Create and save a text file
+file_content <- c("This is a test file.", "Second line of the file.", input_content, input_parameter)
+writeLines(file_content, "/app/results/test_output.txt")
+```

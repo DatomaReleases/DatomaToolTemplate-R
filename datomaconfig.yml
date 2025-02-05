@@ -1,0 +1,44 @@
+tool:
+  compute:
+    x86:
+      enable: true
+      spot: false
+      instance_types:
+        - m6a
+    arm64:
+      enable: true
+      spot: false
+      instance_types:
+        - c6g
+      
+
+tasks:
+  taskname:
+    type: RMarkdown
+    config:
+      script: /app/script.Rmd
+      output_folder: /app/results
+      upload_output_folder: true
+      upload_output_zip: false
+      zip_filename: testResults
+      input_mapping:
+        in_file: input_file
+    autoscaling:
+      default:
+        vcpu:
+          base: 1
+          multipliers:
+            num_files:
+              - value: 1
+                inputs:
+                  - input_file
+          max: 64
+
+        ram:
+          base: 0
+          multipliers: 
+            file_size:
+              - value: 500
+                inputs:
+                  - input_file
+            vcpu: 1900

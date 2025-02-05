@@ -1,0 +1,31 @@
+{
+  "parameters": [
+    {
+      "label": "Example",
+      "parameters": [
+        {
+          "key": "first_parameter",
+          "label": "Just a dummy",
+          "type": "Dropdown",
+          "bind": {
+            "options": [
+              "option1",
+              "option2",
+              "option3"
+            ]
+          },
+          "model": "option1"
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "key": "input_file",
+      "label": "Input File",
+      "model": [],
+      "shownExtensions": [".txt"],
+      "maxFiles": 1
+    }
+  ]
+}
