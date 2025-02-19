@@ -32,7 +32,7 @@ If forking this template, feel free to change your new repository's name to matc
 - [Line **29**](/script.Rmd#L29) shows how to get the value of a parameter.
 
 ## How to test?
-1. Inside this template's folder, execute the command `docker build -t toolname`
+1. Inside this template's folder, execute the command `docker build -t toolname .`
 2. Then, run `docker run --rm toolname`
     - Alternatively, you can run `docker run --rm -it --entrypoint="bash" toolname` to run the container interactively.
         - You can execute your Rmd script with `taskset -c 0 R -e "rmarkdown::render('script.Rmd', params = list(first_parameter = 'test', input_file = '/app/test_file.txt'))"`
